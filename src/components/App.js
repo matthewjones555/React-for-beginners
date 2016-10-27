@@ -19,6 +19,7 @@ class App extends React.Component {
         };
 
         this.addFish = this.addFish.bind(this);
+        this.updateFish = this.updateFish.bind(this);
         this.loadSamples = this.loadSamples.bind(this);
         this.addToOrder = this.addToOrder.bind(this);
     }
@@ -56,6 +57,14 @@ class App extends React.Component {
         });
     }
 
+    updateFish(key, fish) {
+        const fishes = {...this.state.fishes};
+        fishes[key] = fish;
+        this.setState({
+            fishes: fishes,
+        });
+    }
+
     addToOrder(key) {
         const order = {...this.state.order};
         order[key] = order[key] + 1 || 1;
@@ -80,7 +89,7 @@ class App extends React.Component {
                     </ul>
                 </div>
                 <Order fishes={this.state.fishes} order={this.state.order} params={this.props.params} />
-                <Inventory addFish={this.addFish} loadSamples={this.loadSamples} />
+                <Inventory addFish={this.addFish} updateFish={this.updateFish} loadSamples={this.loadSamples} fishes={this.state.fishes} />
             </div>
         );
     }
