@@ -3,7 +3,7 @@
  */
 import React from 'react';
 
-const Header = (props) => (
+const Header = ({ tagline }) => (
     <header className="top">
         <h1>
             Catch
@@ -13,8 +13,12 @@ const Header = (props) => (
             </span>
             Day
         </h1>
-        <h3 className="tagline">{props.tagline}</h3>
+        <h3 className="tagline">{tagline}</h3>
     </header>
 );
+
+Header.propTypes = {
+    tagline: React.PropTypes.string.isRequired,
+};
 
 export default Header;
